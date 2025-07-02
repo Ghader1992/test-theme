@@ -302,6 +302,80 @@ ul, ol {
 	word-wrap: normal !important;
 }
 
+/* Recent Posts Card Grid */
+.recent-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); /* Responsive columns */
+    gap: var(--spacing-md); /* Gap between cards */
+    padding-top: var(--spacing-lg); /* Space above the grid */
+}
+
+.recent-posts-grid article.post { /* Targeting articles within the grid */
+    background-color: var(--color-light);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column; /* Stack card content vertically */
+    overflow: hidden; /* Ensures box-shadow and border-radius on children are neat */
+}
+
+.recent-posts-grid article.post .post-thumbnail {
+    margin-bottom: 0; /* Remove default margin as image is part of card structure */
+}
+
+.recent-posts-grid article.post .post-thumbnail img {
+    width: 100%;
+    height: 200px; /* Fixed height for card images */
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    border-radius: 0; /* Reset if global image styles add radius; top corners handled by article */
+    /* If image is first element, its top radius can be part of article's radius.
+       If card has padding, then image might need top-left/right radius.
+       For simplicity, with overflow:hidden on article, this should be fine. */
+}
+
+.recent-posts-grid article.post .entry-header,
+.recent-posts-grid article.post .entry-content,
+.recent-posts-grid article.post .entry-footer {
+    padding: var(--spacing-md);
+}
+
+.recent-posts-grid article.post .entry-header {
+    padding-bottom: var(--spacing-xs); /* Less padding below header */
+}
+.recent-posts-grid article.post .entry-content {
+    flex-grow: 1; /* Allows content to expand, pushing footer down */
+    padding-top: 0;
+}
+
+
+.recent-posts-grid article.post .entry-title {
+    font-size: var(--font-size-h4); /* Slightly smaller for cards */
+    margin-top: 0; /* Remove default heading margin */
+}
+
+.recent-posts-grid article.post .entry-meta {
+    font-size: 0.8rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.read-more-link {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--color-primary);
+    color: var(--color-light) !important; /* Ensure text is light on dark background */
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: var(--spacing-sm);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.read-more-link:hover,
+.read-more-link:focus {
+    background-color: var(--color-secondary); /* Darken or change on hover */
+    color: var(--color-light) !important;
+}
+
 /* Responsive Menu Styles */
 .menu-toggle {
     display: none; /* Hidden by default, shown on mobile */

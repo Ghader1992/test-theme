@@ -47,7 +47,11 @@
 	<div class="entry-content">
 		<?php
 		the_excerpt(); // Display excerpt for archive/home pages
-
+		?>
+		<a href="<?php echo esc_url(get_permalink()); ?>" class="read-more-link">
+			<?php esc_html_e('Read More &raquo;', 'mycustomtheme'); ?>
+		</a>
+		<?php
 		wp_link_pages(
 			array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'mycustomtheme' ),
