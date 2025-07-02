@@ -110,6 +110,8 @@ ul, ol {
     color: var(--color-text-light);
     padding: var(--spacing-sm) 0;
     border-bottom: 3px solid var(--color-primary);
+    position: relative; /* Ensure it's a positioning context */
+    z-index: 100; /* Basic z-index for header */
 }
 
 .header-container {
@@ -148,19 +150,22 @@ ul, ol {
     /* margin-top removed, flexbox handles alignment */
 }
 
-.main-navigation ul,
-.main-navigation .nav-menu { /* Target generated class */
+.main-navigation ul, /* Legacy support if wp_nav_menu doesn't output .nav-menu */
+.main-navigation .nav-menu {
     list-style: none;
-    margin: 0; /* Remove default ul margin */
-    padding: 0; /* Remove default ul padding */
+    margin: 0;
+    padding: 0;
 }
 
-.main-navigation ul li {
+/* Desktop: list items inline */
+.main-navigation .nav-menu li {
     display: inline;
-    padding: 0 var(--spacing-sm);
+    margin: 0; /* Reset margin */
+    padding: 0 var(--spacing-sm); /* Padding between items */
 }
 
-.main-navigation ul li a {
+.main-navigation ul li a,
+.main-navigation .nav-menu li a { /* Ensure link styles apply to new structure too */
     color: var(--color-light);
     text-decoration: none;
 }
