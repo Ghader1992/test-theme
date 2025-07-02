@@ -376,6 +376,42 @@ ul, ol {
     color: var(--color-light) !important;
 }
 
+/* Footer Navigation Menu Widgets */
+.site-footer .widget_nav_menu .widget-title {
+    /* Assuming widget_title is an h2 or similar, it inherits general widget title styles */
+    /* We can add more specific styling if needed, e.g., text-align if widgets are centered */
+    margin-bottom: var(--spacing-sm); /* Ensure space before the menu list */
+}
+
+.site-footer .widget_nav_menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left; /* Default for LTR, ensures lists aren't centered if widget text is centered */
+}
+
+.site-footer .widget_nav_menu li {
+    display: block; /* Stack items vertically */
+    margin-bottom: var(--spacing-xs);
+}
+
+.site-footer .widget_nav_menu li:last-child {
+    margin-bottom: 0;
+}
+
+.site-footer .widget_nav_menu li a {
+    color: rgba(244, 244, 244, 0.85); /* Slightly dimmer than pure white/brightest text */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.site-footer .widget_nav_menu li a:hover,
+.site-footer .widget_nav_menu li a:focus {
+    color: var(--color-light); /* Brighten on hover/focus */
+    text-decoration: underline;
+}
+
+
 /* Responsive Menu Styles */
 .menu-toggle {
     display: none; /* Hidden by default, shown on mobile */
