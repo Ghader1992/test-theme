@@ -57,11 +57,12 @@ body {
     line-height: var(--line-height-base);
     color: var(--color-text);
     background-color: var(--color-background);
-    margin: 0; /* Removed default body margin, padding applied by .site-container or similar */
+    margin: 0;
 }
 
 .site-container { /* New wrapper for overall site content if body padding is removed */
-    padding: var(--spacing-md);
+    /* This class is not currently used in the HTML, but could be added inside body in header.php/footer.php */
+    /* padding: var(--spacing-md); */
 }
 
 
@@ -142,6 +143,7 @@ ul, ol {
 }
 
 .main-navigation {
+    flex-shrink: 0; /* Prevent navigation from shrinking if site branding is very wide */
     /* No float needed */
     /* margin-top removed, flexbox handles alignment */
 }

@@ -14,12 +14,12 @@ get_header(); ?>
 
 	<div id="primary" class="content-area front-page">
 		<main id="main" class="site-main">
-
-			<?php
-			// This will include the template part that queries and displays 3 recent posts.
-			get_template_part( 'template-parts/content', 'home' );
-			?>
-
+			<div class="container"> <?php // Added container for padding ?>
+				<?php
+				// This will include the template part that queries and displays 3 recent posts.
+				get_template_part( 'template-parts/content', 'home' );
+				?>
+			</div> <?php // End container ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

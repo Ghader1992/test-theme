@@ -16,36 +16,36 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
+		<div class="container"> <?php // Added container for padding ?>
+			<?php
+			if ( have_posts() ) :
 
-		<?php
-		if ( have_posts() ) :
+				/* Start the Loop */
+				while ( have_posts() ) :
+					the_post();
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+					/*
+					 * Include the Post-Format-specific template for the content.
+					 * If you want to override this in a child theme, then include a file
+					 * called content-___.php (where ___ is the Post Format) and that will be used instead.
+					 * We will use content-post.php for standard posts.
+					 */
+					// If you want to support different post formats, you would use get_post_format()
+					// and have template parts like content-aside.php, content-gallery.php etc.
+					// For this theme, we'll use content-post for all posts in the main loop.
+					get_template_part( 'template-parts/content', 'post' );
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format) and that will be used instead.
-				 * We will use content-post.php for standard posts.
-				 */
-				// If you want to support different post formats, you would use get_post_format()
-				// and have template parts like content-aside.php, content-gallery.php etc.
-				// For this theme, we'll use content-post for all posts in the main loop.
-				get_template_part( 'template-parts/content', 'post' );
+				endwhile;
 
-			endwhile;
+				the_posts_navigation(); // For navigating between older/newer posts pages
 
-			the_posts_navigation(); // For navigating between older/newer posts pages
+			else :
 
-		else :
+				get_template_part( 'template-parts/content', 'none' );
 
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
+			endif;
+			?>
+		</div> <?php // End container ?>
 	</main><!-- #main -->
 </div><!-- #primary -->
 
