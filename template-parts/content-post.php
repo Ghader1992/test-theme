@@ -32,7 +32,15 @@
 
 	<?php if ( has_post_thumbnail() ) : ?>
 		<div class="post-thumbnail">
-			<?php the_post_thumbnail(); ?>
+			<a href="<?php echo esc_url( get_permalink() ); ?>" aria-hidden="true" tabindex="-1">
+				<?php
+				the_post_thumbnail( 'large', array(
+					'alt' => the_title_attribute( array(
+						'echo' => false,
+					) ),
+				) );
+				?>
+			</a>
 		</div><!-- .post-thumbnail -->
 	<?php endif; ?>
 

@@ -5,137 +5,249 @@ body, h1, h2, p, ul, li, nav, footer, header, article, aside {
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
-    padding: 20px;
+:root {
+    --color-primary: #0779e4;
+    --color-secondary: #33aaff;
+    --color-dark: #333;
+    --color-light: #fff;
+    --color-text: #333;
+    --color-text-light: #f4f4f4; /* For dark backgrounds */
+    --color-background: #f4f4f4;
+    --color-border: #ddd;
+    --color-meta: #666;
+
+    /* Typography */
+    --font-primary: Arial, sans-serif;
+    --font-secondary: Georgia, serif; /* Example */
+    --font-size-base: 16px;
+    --font-size-h1: 2.5rem;
+    --font-size-h2: 2rem;
+    --font-size-h3: 1.75rem;
+    --font-size-h4: 1.5rem;
+    --font-size-h5: 1.25rem;
+    --font-size-h6: 1rem;
+    --line-height-base: 1.6;
+    --line-height-heading: 1.2;
+
+    /* Spacing */
+    --spacing-unit: 8px;
+    --spacing-xs: var(--spacing-unit);      /* 8px */
+    --spacing-sm: calc(var(--spacing-unit) * 2); /* 16px */
+    --spacing-md: calc(var(--spacing-unit) * 3); /* 24px */
+    --spacing-lg: calc(var(--spacing-unit) * 4); /* 32px */
+    --spacing-xl: calc(var(--spacing-unit) * 5); /* 40px */
+
+    /* Site Width */
+    --site-max-width: 1200px;
 }
 
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 20px;
+html {
+    font-size: var(--font-size-base); /* Set base font size for rem units */
+    box-sizing: border-box; /* Better reset */
 }
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit; /* Inherit box-sizing from html */
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: var(--line-height-base);
+    color: var(--color-text);
+    background-color: var(--color-background);
+    margin: 0; /* Removed default body margin, padding applied by .site-container or similar */
+}
+
+.site-container { /* New wrapper for overall site content if body padding is removed */
+    padding: var(--spacing-md);
+}
+
+
+.container { /* General container, can be used for main content area */
+    width: 100%; /* Takes full width of parent */
+    max-width: var(--site-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-md); /* Use spacing variables */
+    padding-right: var(--spacing-md);
+    /* overflow: hidden; Removed, can cause issues */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+    line-height: var(--line-height-heading);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-dark); /* Or a specific heading color variable */
+}
+
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+h5 { font-size: var(--font-size-h5); }
+h6 { font-size: var(--font-size-h6); }
+
+p {
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    padding-left: var(--spacing-md);
+}
+
 
 /* Header & Navigation */
 .site-header {
-    background: #333;
-    color: #fff;
-    padding: 20px 0;
-    border-bottom: #0779e4 3px solid;
+    background: var(--color-dark);
+    color: var(--color-text-light);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 3px solid var(--color-primary);
 }
 
-.site-header .site-branding {
-    float: left;
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
+.site-branding {
+    /* No float needed */
+}
+
+.site-header .site-title { /* Targeting the h1/p directly */
+    margin: 0; /* Remove default heading margins */
+}
 .site-header .site-title a {
-    color: #fff;
+    color: var(--color-light);
     text-decoration: none;
-    font-size: 24px;
+    font-size: var(--font-size-h3); /* Using h3 size for site title */
 }
 
 .site-header .site-description {
-    font-size: 14px;
-    color: #ccc;
+    font-size: 0.9rem; /* Relative to base font size */
+    color: var(--color-text-light);
+    opacity: 0.8;
+    margin-top: calc(var(--spacing-unit) / 2); /* Smaller margin */
+    margin-bottom: 0;
 }
 
 .main-navigation {
-    float: right;
-    margin-top: 10px; /* Adjust as needed */
+    /* No float needed */
+    /* margin-top removed, flexbox handles alignment */
 }
 
-.main-navigation ul {
+.main-navigation ul,
+.main-navigation .nav-menu { /* Target generated class */
     list-style: none;
+    margin: 0; /* Remove default ul margin */
+    padding: 0; /* Remove default ul padding */
 }
 
 .main-navigation ul li {
     display: inline;
-    padding: 0 10px;
+    padding: 0 var(--spacing-sm);
 }
 
 .main-navigation ul li a {
-    color: #fff;
+    color: var(--color-light);
     text-decoration: none;
 }
 
 .main-navigation ul li a:hover {
-    color: #0779e4;
+    color: var(--color-primary);
 }
 
 /* Content Area */
 .content-area {
-    padding: 20px 0;
+    padding: var(--spacing-lg) 0;
 }
 
 .site-main article {
-    background: #fff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
+    background: var(--color-light);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--color-border);
 }
 
-.entry-title {
-    margin-bottom: 10px;
+.entry-title { /* This is h2 on archive pages */
+    margin-bottom: var(--spacing-xs);
 }
 
-.entry-title a {
-    text-decoration: none;
-    color: #333;
-}
-
-.entry-title a:hover {
-    color: #0779e4;
-}
+/* .entry-title a is already fine */
 
 .entry-meta {
-    font-size: 0.9em;
-    color: #666;
-    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--color-meta);
+    margin-bottom: var(--spacing-sm);
 }
 
+.post-thumbnail {
+    margin-bottom: var(--spacing-sm);
+}
+.post-thumbnail a {
+    display: block; /* Make the link a block element */
+    text-decoration: none; /* Remove underline from link */
+}
 .post-thumbnail img {
     max-width: 100%;
+    width: 100%; /* Ensure it tries to fill the container width */
     height: auto;
-    margin-bottom: 15px;
+    display: block; /* Remove bottom space under image */
+    border-radius: 4px; /* Optional: slight rounding of image corners */
 }
 
-.entry-content p {
-    margin-bottom: 10px;
+.entry-content p { /* Handled by global p styles */
+    /* margin-bottom: var(--spacing-sm); */
 }
 
 /* Footer */
 .site-footer {
-    background: #333;
-    color: #fff;
+    background: var(--color-dark);
+    color: var(--color-text-light);
     text-align: center;
-    padding: 20px 0;
-    margin-top: 20px;
+    padding: var(--spacing-lg) 0;
+    margin-top: var(--spacing-lg);
 }
 
 .site-footer .widget-area {
-    padding: 20px;
-    display: flex; /* Basic layout for widgets */
+    padding: var(--spacing-md);
+    display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    gap: var(--spacing-md); /* For spacing between widgets */
 }
 
 .site-footer .widget {
-    margin-bottom: 20px;
-    padding: 10px;
-    min-width: 200px; /* Minimum width for footer widgets */
+    margin-bottom: 0; /* Handled by gap */
+    padding: var(--spacing-sm);
+    min-width: 200px;
+    background-color: rgba(255,255,255,0.05); /* Slight background for widgets if needed */
+    border-radius: 4px;
+}
+
+.site-footer .widget-title { /* Assuming h2 for widget titles */
+    font-size: var(--font-size-h5);
+    color: var(--color-light);
+    margin-bottom: var(--spacing-sm);
 }
 
 
 .site-footer .site-info {
-    margin-top: 10px;
+    margin-top: var(--spacing-md);
 }
 
 .site-footer .site-info a {
-    color: #0779e4;
+    color: var(--color-primary);
     text-decoration: none;
 }
 
@@ -164,4 +276,63 @@ body {
 	position: absolute !important;
 	width: 1px;
 	word-wrap: normal !important;
+}
+
+/* Responsive Menu Styles */
+.menu-toggle {
+    display: none; /* Hidden by default, shown on mobile */
+    background: var(--color-primary);
+    color: var(--color-light);
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.menu-toggle:hover {
+    background: var(--color-secondary);
+}
+
+@media (max-width: 768px) {
+    .main-navigation .nav-menu { /* The UL */
+        display: none; /* Hide desktop menu by default */
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
+        background-color: var(--color-dark);
+        padding: var(--spacing-sm) 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+
+    .main-navigation.toggled .nav-menu {
+        display: block; /* Show when .toggled class is present */
+    }
+
+    .main-navigation .nav-menu li {
+        display: block; /* Stack menu items vertically */
+        text-align: center;
+    }
+
+    .main-navigation .nav-menu li a {
+        display: block;
+        padding: var(--spacing-sm);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .main-navigation .nav-menu li:last-child a {
+        border-bottom: none;
+    }
+
+    .menu-toggle {
+        display: inline-block; /* Show the toggle button */
+    }
+
+    .header-container {
+        /* Allow toggle to be properly positioned if branding takes up space */
+        flex-wrap: wrap;
+    }
+    .site-branding {
+        flex-grow: 1; /* Allow branding to take available space */
+    }
 }
