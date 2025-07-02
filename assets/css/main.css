@@ -125,6 +125,23 @@ ul, ol {
 
 .site-branding {
     /* No float needed */
+    /* Allow site branding to shrink if necessary, but not grow indefinitely if logo is huge */
+    flex-shrink: 1;
+    min-width: 0; /* Important for allowing flex items with text to shrink */
+}
+
+/* Constrain Custom Logo size */
+.custom-logo-link { /* This is the class WordPress adds to the link wrapping the logo */
+    display: inline-block; /* Or block, depending on desired flow */
+    vertical-align: middle; /* Good for aligning with text if site title was next to it */
+}
+
+.custom-logo-link img {
+    max-width: 180px;
+    max-height: 60px;
+    width: auto;
+    height: auto;
+    display: block; /* Removes extra space beneath the image if its link is inline */
 }
 
 .site-header .site-title { /* Targeting the h1/p directly */

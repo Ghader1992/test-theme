@@ -93,8 +93,8 @@ function mycustomtheme_setup() {
 	add_theme_support(
 		'custom-logo',
 		array(
-			'height'      => 250,
-			'width'       => 250,
+			'height'      => 60,  // Suggested height for header logo
+			'width'       => 180, // Suggested width for header logo
 			'flex-width'  => true,
 			'flex-height' => true,
 		)
